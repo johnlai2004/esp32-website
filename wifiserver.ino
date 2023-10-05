@@ -5,6 +5,7 @@
 */
 #include "config.h"
 #include "server.h"
+#include "html.h"
 
 #include <WebServer.h>
 #include <ArduinoJson.h>
