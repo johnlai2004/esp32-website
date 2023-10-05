@@ -41,22 +41,19 @@ void handle_home() {
   server.send(200,"text/html",html);
 }
 
-void setup_routes() {     
+void server_start() {
   server.on("/", handle_home);
   server.on("/connect", HTTP_POST, handle_connect);
+  server.begin();
 }
 
 void setup() {
 
   Serial.begin(115200);
-  Serial.println();
-  Serial.println("Configuring access point...");
 
   access_point_start();
 
-  setup_routes();
-  
-  server.begin();
+  server_start();
 
   Serial.println("Server started");
 }
