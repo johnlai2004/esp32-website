@@ -8,7 +8,6 @@
 #include "html.h"
 
 WebServer server(80);
-
 String new_ssid = "";
 String new_pass = "";
 String api_url = "";
@@ -28,6 +27,18 @@ void access_point_start() {
   Serial.print("AP IP address: ");
   Serial.println(myIP);
 }
+const char* get_pass() {
+  return new_pass.c_str();
+}
+const char* get_ssid() {
+  return new_ssid.c_str();
+}
+String get_api_url() {
+  return api_url;
+}
+bool ssid_exists() {
+  return new_ssid != "";
+}
 
 void handle_connect() {
   String body = server.arg("plain");
@@ -36,9 +47,6 @@ void handle_connect() {
   new_ssid = jsonDocument["ss_id"].as<String>();
   new_pass = jsonDocument["ss_pass"].as<String>();
   api_url = jsonDocument["api_url"].as<String>();
-  Serial.println(new_ssid);
-  Serial.println(new_pass);
-  Serial.println(api_url);
 
   server.send(200, "text/html", html_current_connection(new_ssid, new_pass, api_url));
 }
@@ -57,7 +65,9 @@ void server_start() {
   server.on("/connect", HTTP_POST, handle_connect);
   server.begin();
 }
-
+void server_stop() {
+  server.stop();
+}
 void server_handle_client() {
   server.handleClient();
 }

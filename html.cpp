@@ -31,7 +31,7 @@ String html_form() {
   html += "<h1>Connect with:</h1>";
   html += "<label>SSID</label><input id=\"ss_id\" />";
   html += "<label>PASS</label><input id=\"ss_pass\" type=\"password\" />";
-  html += "<label>API_URL</label><input id=\"api_url\" />";
+  html += "<label>API_URL</label><input id=\"api_url\" type=\"url\" />";
   html += "<button type=\"button\" onClick=\"send();\">Save</button>";
   html += "</form>";
   return html;
