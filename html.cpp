@@ -3,6 +3,7 @@
 String html_foot() {
   return "</body></html>";
 }
+
 String html_css() {
   String html = "<style>";
   html += "form {margin-bottom: 50px; display: grid; grid-template: auto / 300px auto; grid-gap: 20px;} ";
@@ -39,8 +40,8 @@ String html_form() {
 String html_current_connection(String new_ssid, String new_pass, String api_url) {
   String html = "<h2>Current Settings</h2>";
   html += "<label>SSID</label><span>" + new_ssid + "</span>";
-  html += "<label>SSPASS</label><span data-msg=\""+ new_pass +"\" onClick=\"this.innerHTML = this.getAttribute('data-msg')\">***click to show***</span>";
-  html += "<label>API</label><span>" + api_url + "</span>";
+  html += "<label>PASS</label><span data-msg=\""+ new_pass +"\" onClick=\"this.innerHTML = this.getAttribute('data-msg')\">***click to show***</span>";
+  html += "<label>API_URL</label><span>" + api_url + "</span>";
   return html;
 }
 
